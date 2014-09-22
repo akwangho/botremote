@@ -22,7 +22,9 @@ examplelibrary.js:
 'use strict';
 
 var fs = require('promised-io/fs'),
-    assert = require('assert');
+    assert = require('assert'),
+    Return = require('../lib/botremote').Return,
+    Logger = require('../lib/botremote').Logger;
 
 var lib = module.exports;
 
@@ -49,6 +51,33 @@ lib.countItemsInDirectory = function (path) {
 lib.countItemsInDirectory.doc = 'Returns the number of items in the directory specified by `path`.';
 
 /**
+ * Example of asynchronous keyword with log output.
+ *
+ * You can implement asynchronous keywords just returning an A+ promise.
+ * Promise can be resolved or rejected with respectively:
+ *
+ * - {Return} Return value consists of return value as the first param and output log as the second param.
+ * - arbitrary return value, or
+ * - an instance of `Error` if the keyword failed
+ *
+ * Just count items in given directory.
+ *
+ * @param path directory path to count item in with output log in robot log.
+ */
+lib.countItemsInDirectoryWithOutput = function (path) {
+    var logger = new Logger();
+    logger.info('Start to read directory from path[%s].', path);
+    return fs.readdir(path).then(
+        function (items) {
+            logger.debug('The items: [%s].', items.toString());
+            return new Return(items.length, logger.getMsg());
+        });
+};
+// The doc attribute is used for inspection on the command line of client and doc generation.
+// It's optional and defaults to empty string when missing.
+lib.countItemsInDirectoryWithOutput.doc = 'Returns the number of items in the directory specified by `path` with log output.';
+
+/**
  * Example synchronous keyword.
  *
  * Any keyword which does not return an A+ promise is considered sync.
@@ -67,10 +96,24 @@ lib.stringsShouldBeEqual = function (str1, str2) {
     assert.equal(str1, str2, 'Given strings are not equal');
 };
 
+/**
+ *
+ * Example of fail case with log output
+ *
+ * @returns {Return}
+ */
+lib.awfulKeyword = function () {
+    var logger = new Logger();
+    logger.info('Enter awful keyword.');
+    logger.warn('Awful thing is going to happen.');
+    return new Return('Awful return value', logger.getMsg(), new Error('Error happens because this is an awful keyword'));
+};
+lib.awfulKeyword.doc = 'This keyword will cause some terrible thing happen, please use this keyword carefully.';
+
 
 // Run this keyword library if the library itself is called explicitly.
 if (!module.parent) {
-    var robot = require('../lib/robotremote');
+    var robot = require('../lib/botremote');
     var server = new robot.Server([lib], { host: 'localhost', port: 8270, allowStop: true });
 }
 ```
@@ -92,9 +135,17 @@ Count Items in Directory
     ${items2} =    Count Items In Directory    ${TEMPDIR}
     Log    ${items1} items in '${CURDIR}' and ${items2} items in '${TEMPDIR}'
 
+Count Items in Directory With Output
+    ${items1} =    Count Items In Directory With Output    ${CURDIR}
+    ${items2} =    Count Items In Directory With Output    ${TEMPDIR}
+    Log    ${items1} items in '${CURDIR}' and ${items2} items in '${TEMPDIR}'
+
+Do Awful Things
+    Awful Keyword
+
 Failing Example
     Strings Should Be Equal    Hello    Hello
-    Strings Should Be Equal    not      equal*** Settings ***
+    Strings Should Be Equal    not      equal
 ```
 
 Run the remote server:
@@ -138,7 +189,7 @@ undefined
 
 ## License
 
-Copyright (c) 2013, 2014 Michele Comignano <comick@gmail.com>
+Copyright (c) 2014 Paul Ho <akwangho@gmail.com>
 
 Permission is hereby granted, free of charge, to any person
 obtaining a copy of this software and associated documentation
@@ -160,4 +211,3 @@ HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
 WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
 FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
 OTHER DEALINGS IN THE SOFTWARE.
-
