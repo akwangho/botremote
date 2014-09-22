@@ -1,9 +1,9 @@
 # robotremote
 
-[![NPM](https://nodei.co/npm/robotremote.png?downloads=true&stars=true)](https://nodei.co/npm/robotremote/)
-[![NPM](https://nodei.co/npm-dl/robotremote.png?months=6)](https://nodei.co/npm/robotremote/)
+[![NPM](https://nodei.co/npm/botremote.png?downloads=true&stars=true)](https://nodei.co/npm/botremote/)
+[![NPM](https://nodei.co/npm-dl/botremote.png?months=6)](https://nodei.co/npm/botremote/)
 
-[![Build Status](https://travis-ci.org/comick/node-robotremoteserver.svg?branch=master)](https://travis-ci.org/comick/node-robotremoteserver)
+[![Build Status](https://travis-ci.org/akwangho/botremoteserver.svg?branch=master)](https://travis-ci.org/akwangho/botremoteserver)
 
   A node.js module providing the [robot framework](http://www.robotframework.org) remote library interface.
   Also provide convenient remote library interface client.
@@ -12,7 +12,7 @@
 
 Install [robot framework](http://code.google.com/p/robotframework/wiki/Installation) first. Then:
 
-    $ npm install robotremote
+    $ npm install botremote
 
 ## Example
 
@@ -110,7 +110,7 @@ Then launch tests:
 The client is useful for testing keywords from the REPL:
 
 ```js
-> var lib = new require('./lib/robotremote').Client({ host: 'localhost', port: 8270 })
+> var lib = new require('./lib/botremote').Client({ host: 'localhost', port: 8270 })
 > lib.stringsShouldBeEqual
 { [Function]
   args: [ 'str1', 'str2' ],

@@ -2,8 +2,8 @@
 
 var fs = require('promised-io/fs'),
     assert = require('assert'),
-    Return = require('../lib/robotremote').Return,
-    Logger = require('../lib/robotremote').Logger;
+    Return = require('../lib/botremote').Return,
+    Logger = require('../lib/botremote').Logger;
 
 var lib = module.exports;
 
@@ -92,6 +92,6 @@ lib.awfulKeyword.doc = 'This keyword will cause some terrible thing happen, plea
 
 // Run this keyword library if the library itself is called explicitly.
 if (!module.parent) {
-    var robot = require('../lib/robotremote');
+    var robot = require('../lib/botremote');
     var server = new robot.Server([lib], { host: 'localhost', port: 8270, allowStop: true });
 }

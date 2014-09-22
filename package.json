@@ -1,5 +1,5 @@
 {
-    "name": "robotremote",
+    "name": "botremote",
     "description": "A remote keyword server and client for the generic test automation suite Robot Framework.",
     "keywords": [
         "robotframework",
@@ -14,26 +14,26 @@
         "test",
         "ATDD"
     ],
-    "version": "0.9.2",
+    "version": "0.0.1",
     "preferGlobal": false,
-    "homepage": "https://github.com/comick/node-robotremoteserver",
+    "homepage": "https://github.com/akwangho/botremote",
     "author": {
-        "name": "Michele Comignano",
-        "email": "comick@gmail.com",
-        "url": "https://github.com/comick"
+        "name": "Paul Ho",
+        "email": "akwangho@gmail.com",
+        "url": "https://github.com/akwangho"
     },
     "repository": {
         "type": "git",
-        "url": "git://github.com/comick/node-robotremoteserver.git"
+        "url": "git://github.com/akwangho/botremote.git"
     },
     "bugs": {
-        "url": "https://github.com/comick/node-robotremoteserver/issues"
+        "url": "https://github.com/akwangho/botremote/issues"
     },
     "directories": {
         "lib": "./lib",
         "example": "./example"
     },
-    "main": "./lib/robotremote.js",
+    "main": "./lib/botremote.js",
     "dependencies": {
         "xmlrpc": ">=1.0.2",
         "is-promise": ">=1.0.0"
@@ -51,7 +51,7 @@
     "licenses": [
         {
             "type": "MIT",
-            "url": "https://github.com/comick/node-robotremoteserver/raw/master/LICENSE"
+            "url": "https://github.com/akwangho/botremote/raw/master/LICENSE"
         }
     ],
     "optionalDependencies": {}
