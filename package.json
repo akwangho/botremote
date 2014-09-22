@@ -14,7 +14,7 @@
         "test",
         "ATDD"
     ],
-    "version": "0.0.1",
+    "version": "0.0.3",
     "preferGlobal": false,
     "homepage": "https://github.com/akwangho/botremote",
     "author": {

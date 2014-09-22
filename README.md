@@ -1,4 +1,4 @@
-# robotremote
+# botremote
 
 [![NPM](https://nodei.co/npm/botremote.png?downloads=true&stars=true)](https://nodei.co/npm/botremote/)
 [![NPM](https://nodei.co/npm-dl/botremote.png?months=6)](https://nodei.co/npm/botremote/)
