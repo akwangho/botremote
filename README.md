@@ -3,7 +3,7 @@
 [![NPM](https://nodei.co/npm/botremote.png?downloads=true&stars=true)](https://nodei.co/npm/botremote/)
 [![NPM](https://nodei.co/npm-dl/botremote.png?months=6)](https://nodei.co/npm/botremote/)
 
-[![Build Status](https://travis-ci.org/akwangho/botremoteserver.svg?branch=master)](https://travis-ci.org/akwangho/botremoteserver)
+[![Build Status](https://travis-ci.org/akwangho/botremoteserver.svg?branch=master)](https://travis-ci.org/akwangho/botremote)
 
   A node.js module providing the [robot framework](http://www.robotframework.org) remote library interface.
   Also provide convenient remote library interface client.
